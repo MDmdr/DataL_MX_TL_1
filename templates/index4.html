@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Factura xml a csv / excel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/dropzone.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}">
+    <script src="{{ url_for('static', filename='javascripts/dropzone.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='javascripts/wavesurfer.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='javascripts/jquery.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='javascripts/app.js')}}"></script>
+</head>
+<body>
+    <!-- <p> Arrastre para subir sus Facturas xml </p> -->
+    <h3> Arrastre para subir sus Facturas xml </h3>
+
+    <form action="/upload" method="post" class="dropzone"></form>
+
+    </br></br>
+    <hr>
+    <h3> <a href="/">Refrescar para ver archivos</a> </h3>
+    <h3> <a href="/crearDir">Crear directorio</a> </h3>
+    <h3> <a href="/crearSesion">Crear sesion</a> </h3>
+    <hr>
+    </br></br>
+
+    <!-- -------------------------- -->
+    <div>
+        {% for  image in all_files_xml %}
+            <div class="">
+              
+                {{image}}  
+                {% if not ".csv" in image  %}            
+                    <a href="/convertirCSV/{{image}}"> [ convertir a CSV / Excel ]</a>                    
+                    <a href="/download/{{image}}"> [ Descargar ]</a>
+                    <a href="/eliminar/{{image}}"> [ Eliminar ]</a>
+                
+                {% else %}
+                    {% if ".csv" in image %}
+                        <a href="/download/{{image}}"> [ Descargar ]</a>
+                        <a href="/eliminar/{{image}}"> [ Eliminar ]</a>
+                        <a href="/addTOall/{{image}}"> [ Agregar a concentrado ]</a>
+                    {% endif %}              
+                {% endif %}
+
+            </div>
+        {% endfor %}
+        
+        
+        <!-- f .csv -->
+    </div>
+    <!-- -------------------------- -->
+
+    <script type="text/javascript">
+
+    console.log("test text imp")
+
+        function test_func(data) {
+
+            data.replace('&#34;', '')
+            console.log(data);
+        }
+        test_func('{{sesion}}');
+
+        // test_func( {sesion} );
+
+
+    </script>
+
+</body>
+</html>

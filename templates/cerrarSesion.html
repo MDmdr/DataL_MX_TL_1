@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Factura</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}" ></script>
+</head>
+<body>
+    <hr>
+	<h4> Cerrar sesion </h4> <p> (Factura) </p>
+
+    <hr>
+	<div class="container">                   
+            <div class="row">                
+                <div class="col">
+                    <form action="/regresar" method="post" class="">
+                    	<input id="sesion" name="sesion" type="hidden" value="{{sesion}}">                      
+                        <input type="submit" value="Regresar" >
+                    </form> 
+                </div>
+                <div class="col">
+                    <!-- <form action="/" method="post" class="">
+                        <input type="submit" value="Omitir" >
+                    </form> -->
+                    <form action="/" method="post" class="">
+                        <input type="submit" value="Salir" >
+                    </form>               
+                </div>
+                <div class="col">
+                    <!-- <form action="/eliminarSesion" method="post" class="">
+                    	<input id="sesion" name="sesion" type="hidden" value="{{sesion}}">                        
+                        <input type="submit" value=" Eliminar sesion" >
+                    </form> -->
+
+                    <form action="/eliminarSesion" method="post" class="">
+                        <input id="sesion" name="sesion" type="hidden" value="{{sesion}}">                        
+                        <input type="submit" value=" Eliminar sesion" >
+                    </form>                  
+                </div>
+            </div>
+    </div>
+
+</body>
+</html>
