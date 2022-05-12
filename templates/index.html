@@ -57,23 +57,25 @@
     <div class="container">
         {% for  image in all_files_xml %}           
             <div class="row">
-                
-                <div class="col-6">
+                <!-- <div class="col">[{{loop.index0 + 1}}]</div> -->
+                <div class="col-4">
+                  [{{loop.index0 + 1}}]   
                   {{image}}
                 </div>
-
+                
                 {% if not "FACTURAS_CONCENTRADO" in image  %}
 
                     {% if ".xml" in image %}
+                        <!-- <div class="col">[{{loop.index0 + 1}}]</div> -->
                         <!-- <a href="/download/{{image}}"> [ Descargar ]</a>
                         <a href="/eliminar/{{image}}"> [ Eliminar ]</a>
                         <a href="/convertirCSV/{{image}}"> [ convertir a CSV / Excel ]</a> -->
-                        <div class="col">
+                        <div class="col">                            
                         <form action="/download2" method="post" class="">            
                             <input id="" name="sesion" type="hidden" value="{{sesion}}">
                             <input id="nombre1" name="nombre" type="hidden" value="{{image}}">
                             <input type="submit" value="Descargar" >
-                        </form>
+                        </form>                        
                         </div>
                         <div class="col">
                         <form action="/eliminar2" method="post" class="">            
@@ -96,8 +98,10 @@
                             <input type="submit" value="[ Agregar BD ] " >
                         </form>
                         </div>
+                        <!-- <div class="col"> [ {{loop.index0 + 1}} ]</div> -->
+                        <div class="col">[{{loop.index0 + 1}}]</div>
                     {% endif %}
-
+                    <hr>
                     {% if ".csv" in image %}
                             <!-- <a href="/download/{{image}}"> [ Descargar ]</a>
                             <a href="/eliminar/{{image}}"> [ Eliminar ]</a>
